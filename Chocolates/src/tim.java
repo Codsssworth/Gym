@@ -5,6 +5,7 @@ public class tim {
         // to see how IntelliJ IDEA suggests fixing it.
         System.out.println("where is tim!");
         System.out.println("handin out chocolates!");
+        System.out.println("goddamn timm!");
 
 
     }
