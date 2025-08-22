@@ -1,16 +1,38 @@
+import java.io.File;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello and welcome!");
-        System.out.println("Helhasome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner scanner = new Scanner(System.in);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalTime alarm = null;
+
+        String file= "Chocolates\\src\\file_example_WAV_1MG.wav";
+//        File file = new File(url);
+
+
+        while (alarm == null) {
+
+            try {
+                System.out.print("Enter alarm time : ");
+                String time = scanner.nextLine();
+                alarm = LocalTime.parse(time, format);
+                System.out.println("Alarm set at : " + alarm);
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid format");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
+
+        AlarmClock alarmClock = new AlarmClock(alarm,file,scanner);
+        Thread clock = new Thread(alarmClock);
+        clock.start();
+}
 }
