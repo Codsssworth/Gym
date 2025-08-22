@@ -11,10 +11,9 @@ public class MusicPlayer {
     public static void main(String[] args) throws UnsupportedAudioFileException, FileNotFoundException, MalformedURLException {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-     String url= "C:\\Users\\Bismay\\Desktop\\file_example_WAV_1MG.wav";
-     String uri= "https://www.youtube.com/watch?v=aok_pGacAGw";
+
+        String url= "Chocolates\\src\\file_example_WAV_1MG.wav";
         File file = new File(url);
-        URL link = new URL(uri);
 
      try(Scanner scanner = new Scanner(System.in);
          AudioInputStream audio = AudioSystem.getAudioInputStream(file)){
