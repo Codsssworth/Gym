@@ -26,7 +26,6 @@ public class MusicPlayer {
 
          while(!choice.equals("X")){
 
-             System.out.println("Playin...");
              System.out.println("Enter P to play");
              System.out.println("Enter S to Stop");
              System.out.println("Enter R to Reset");
@@ -34,7 +33,10 @@ public class MusicPlayer {
              choice = scanner.next().toUpperCase();
 
              switch (choice){
-                 case "P" -> clip.start();
+                 case "P" -> {
+                     clip.start();
+                  System.out.println("Playin...");
+                 }
                  case "S" -> clip.stop();
                  case "R" -> clip.setFramePosition(0);
                  case "X" -> clip.close();
